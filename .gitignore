@@ -103,6 +103,7 @@ typings/
 .tern-port
 
 
+*.sqlite3
 .vscode
 .editorconfig
 .DS_Store
