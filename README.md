@@ -95,4 +95,4 @@ yarn run test
 Within this repo is a **Jenkinsfile** with defines how this project should be built and deployed.
 See a screenshot of a jenkins build job below. It logs the status of the build to a slack channel.
 
-./jenkins-slack.png
+![Jenkins Slack](https://github.com/princeahugah/UserService/blob/master/jenkins-slack.png?raw=true)
