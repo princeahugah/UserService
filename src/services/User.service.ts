@@ -40,7 +40,10 @@ export default class UserService {
   async updateUser(id: string, payload: User): Promise<UserModel|null> {
     const user: UserModel | null = await UserModel.findByPk(id);
     if (user) {
-      return user.update(payload, { raw: true });
+      Object.keys(payload).forEach((key: any) => {
+        user.set(key, payload[key]);
+      });
+      return user.save();
     }
     return null;
   }
