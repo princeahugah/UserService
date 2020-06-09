@@ -20,7 +20,8 @@ Task.init({
     primaryKey: true
   },
   state: {
-    type: DataTypes.ENUM('to do', 'done'),
+    type: DataTypes.ENUM,
+    values: ['to do', 'done'],
     defaultValue: 'to do',
     allowNull: false
   },

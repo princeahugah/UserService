@@ -5,8 +5,7 @@ import db from '../sequelize';
 
 export default class User extends Model<User> {
   public id!: string;
-  public firstName!: string;
-  public lastName!: string
+  public name!: string;
 
   public readonly createdAt!: Date;
   public readonly deletedAt!: Date;

@@ -40,7 +40,7 @@ CORS_METHODS = ["POST", "OPTIONS", "GET", "DELETE", "PUT"]
 
 ## Configure your database
 
-Run DB migration: We are using sqlite3 as the database. You can check the configuration in *migrations/config.json*
+Run DB migration: We are using sqlite3 as the database. You can check the configuration in **migrations/config.json**
 ```bash
 yarn run migrate
 ```
@@ -59,4 +59,38 @@ ctrl + D to exit
 yarn run dev
 ```
 
+Your web server is now exposed on http://localhost:3001
+
+### GET   /api/users
+```bash
+curl -XGET http://localhost:3001/api/users
+```
+
+### POST   /api/users
+```bash
+curl -XPOST -H 'Content-Type: application/json' -d '{"name":"Prince"}' http://localhost:3001/api/users
+```
+
+### PUT   /api/users/{userId}
+```bash
+curl -XPUT -H 'Content-Type: application/json' -d '{"name":"Ahugah"}' http://localhost:3001/api/users/24ce245e-8159-491f-8dc9-24c6d190baba
+```
+
+### DELETE   /api/users/{userId}
+```bash
+curl -X DELETE http://localhost:3001/api/users/24ce245e-8159-491f-8dc9-24c6d190baba
+```
+
+
 ## Tests
+
+Mocha tests
+```bash
+yarn run test
+```
+
+
+## CI/CD
+
+Within this repo is a **Jenkinsfile** with defines how this project should be built and deployed.
+See a screenshot of a jenkins build job below. It logs the status of the build to a slack channel.
