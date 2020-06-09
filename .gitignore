@@ -106,3 +106,4 @@ typings/
 .vscode
 .editorconfig
 .DS_Store
+dist
