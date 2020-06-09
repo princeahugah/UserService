@@ -6,8 +6,7 @@ module.exports = {
       queryInterface.sequelize.query(
           `CREATE TABLE users (
             "id" UUID PRIMARY KEY NOT NULL,
-            "firstName" VARCHAR(100) NOT NULL,
-            "lastName" VARCHAR(100) NOT NULL,
+            "name" VARCHAR(100) NOT NULL,
             "createdAt" DATETIME NOT NULL,
             "updatedAt" DATETIME NOT NULL,
             "deletedAt" DATETIME NULL
@@ -16,7 +15,7 @@ module.exports = {
       queryInterface.sequelize.query(
           `CREATE TABLE tasks (
             "id" UUID PRIMARY KEY NOT NULL,
-            "name" VARCHAR(100) NOT NULL,
+            "state" ENUM ("to do", "done") NOT NULL DEFAULT "to do",
             "description" VARCHAR(255) NULL,
             "userId" uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
             "createdAt" DATETIME NOT NULL,

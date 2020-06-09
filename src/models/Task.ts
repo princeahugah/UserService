@@ -4,7 +4,7 @@ import db from '../sequelize';
 
 export default class Task extends Model<Task> {
   public id!: string;
-  public name!: string;
+  public state!: string;
   public description!: string
   public userId!: string
 
@@ -19,13 +19,14 @@ Task.init({
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true
   },
-  name: {
-    type: new DataTypes.STRING(100),
+  state: {
+    type: DataTypes.ENUM('to do', 'done'),
+    defaultValue: 'to do',
     allowNull: false
   },
   description: {
-    type: new DataTypes.STRING(255),
-    allowNull: true
+    type: DataTypes.STRING,
+    allowNull: false
   },
   userId: {
     type: DataTypes.UUIDV4,

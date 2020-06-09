@@ -22,7 +22,7 @@ yarn install
 
 Setup environment variables
 ```bash
-port = 3000
+port = 3001
 NODE_ENV = development
 
 DB_USERNAME = db-user
@@ -58,3 +58,5 @@ ctrl + D to exit
 ```bash
 yarn run dev
 ```
+
+## Tests
