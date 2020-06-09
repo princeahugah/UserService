@@ -24,7 +24,6 @@
   },
   "files": [
     "src/interfaces/custom.d.ts"
-    // "src/interfaces/users.ts"
   ],
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

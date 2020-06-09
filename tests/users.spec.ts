@@ -13,7 +13,7 @@ describe('User Service', () => {
     await UserModel.destroy({ truncate: true, cascade: false });
   });
 
-  it('should return a list of users', async () => {
+  it('should return an empty list of users', async () => {
     const result = await user.getUsers();
     expect(result.length).to.equal(0);
   });
@@ -44,7 +44,7 @@ describe('User Service', () => {
 
     expect(azumah).to.not.equal(undefined);
     if (azumah) {
-      const result = await (await user.updateUser(azumah?.id, { name: 'Bunny Studio' }));
+      const result = await user.updateUser(azumah?.id, { name: 'Bunny Studio' });
       expect(result?.name).to.equal('Bunny Studio');
     }
   });

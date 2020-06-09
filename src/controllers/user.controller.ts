@@ -28,7 +28,7 @@ export default {
           req.payload = {
             id: req.params.id
           };
-          res.status(200).json({ id: req.params.idl }).end();
+          res.status(200).json({ id: req.params.id }).end();
         })
         .catch((err: Error) => {
           logger.error({
