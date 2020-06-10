@@ -4,7 +4,7 @@
   "description": "User Service",
   "author": "Prince Ahugah",
   "private": false,
-  "main": "./dist/index.js",
+  "main": "./dist/src/index.js",
   "scripts": {
     "start": "tsc && pm2 start ./dist/src/index.js --name user-service",
     "stop": "pm2 stop user-service",

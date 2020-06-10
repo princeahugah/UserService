@@ -35,6 +35,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'yarn install --frozen-lockfile'
+        sh '/usr/local/bin/sequelize-cli db:migrate'
         sh '/usr/local/bin/tsc && /usr/local/bin/pm2 start ./dist/src/index.js --name user-service'
         sh '/usr/local/bin/pm2 status'
         script {
@@ -73,11 +74,12 @@ pipeline {
                   git clone "$repo"
                   cd "$appdir"
                 fi
-                yarn install --frozen-lockfile
                 /usr/local/bin/pm2 stop user-service
+                yarn install --frozen-lockfile
+                /usr/local/bin/sequelize-cli db:migrate
                 /usr/local/bin/pm2 start ./dist/src/index.js --name user-service
                 /usr/local/bin/pm2 status
-				      '''
+              '''
             }
           }
         }
