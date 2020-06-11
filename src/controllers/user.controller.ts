@@ -21,6 +21,23 @@ export default {
         });
   },
 
+  getUser: (req: Request, res: Response): void => {
+    req.app.get('user-service')
+        .getUser(req.params.id)
+        .then((user: UserModel) => {
+          req.payload = user;
+          res.status(200).json(user).end();
+        })
+        .catch((err: Error) => {
+          logger.error({
+            requestId: req.requestId,
+            message: 'An error occurred in getUser handler',
+            error: err
+          });
+          res.status(500).json({}).end();
+        });
+  },
+
   deleteUser: (req: Request, res: Response): void => {
     req.app.get('user-service')
         .deleteUser(req.params.id)

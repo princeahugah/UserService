@@ -3,7 +3,7 @@ import Task from './Task';
 import db from '../sequelize';
 
 
-export default class User extends Model<User> {
+class User extends Model<User> {
   public id!: string;
   public name!: string;
 
@@ -27,14 +27,26 @@ User.init({
   sequelize: db,
   tableName: 'users',
   timestamps: true,
-  paranoid: true
+  paranoid: true,
+  hooks: {
+    afterDestroy: async (instance, options): Promise<void> => {
+      await Task.destroy({
+        where: {
+          userId: instance.get('id')
+        }
+      });
+    }
+  }
 });
 
 
 User.hasMany(Task, {
   sourceKey: 'id',
   foreignKey: 'userId',
-  as: 'task'
+  as: 'task',
+  hooks: true
 });
 
 Task.belongsTo(User);
+
+export default User;

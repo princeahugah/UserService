@@ -38,6 +38,17 @@ describe('User Service', () => {
     expect(result.length).to.equal(3);
   });
 
+  it('should get 1 user', async () => {
+    const albert = {
+      name: 'Albert Einstein'
+    };
+
+    const createdAlbert = await user.createUser(albert);
+    const result = await user.getUser(createdAlbert.id);
+    expect(result.id).to.equal(createdAlbert.id);
+    expect(result.name).to.equal(createdAlbert.name);
+  });
+
   it('should update "Azumah Nelson" to "Bunny Studio"', async () => {
     const users = await user.getUsers();
     const azumah = users.find((u: UserModel) => u.name === 'Azumah Nelson');
@@ -57,7 +68,7 @@ describe('User Service', () => {
     if (john) {
       await user.deleteUser(john?.id);
       const result = await user.getUsers();
-      expect(result.length).to.equal(2);
+      expect(result.length).to.equal(users.length - 1);
     }
   });
 });

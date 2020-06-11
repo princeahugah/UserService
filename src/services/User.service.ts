@@ -28,6 +28,12 @@ export default class UserService {
     });
   }
 
+  getUser(id: string): Promise<UserModel> {
+    return UserModel.findByPk(id, {
+      raw: true
+    });
+  }
+
   createUser(payload: User): Promise<UserModel> {
     return UserModel.create(payload, { raw: true });
   }

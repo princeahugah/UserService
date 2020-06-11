@@ -71,6 +71,11 @@ Your web server is now exposed on http://localhost:3001
 curl -XGET http://localhost:3001/api/users
 ```
 
+### GET   /api/users/{userId}
+```bash
+curl -XGET http://localhost:3001/api/users/24ce245e-8159-491f-8dc9-24c6d190baba
+```
+
 ### POST   /api/users
 ```bash
 curl -XPOST -H 'Content-Type: application/json' -d '{"name":"Prince"}' http://localhost:3001/api/users
