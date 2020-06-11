@@ -41,7 +41,6 @@ pipeline {
             throw new Exception('An error may have occurred during database migration!')
           }
         }
-        sh ''
         sh '/usr/local/bin/tsc && /usr/local/bin/pm2 start ./dist/src/index.js --name user-service'
         sh '/usr/local/bin/pm2 status'
         script {
